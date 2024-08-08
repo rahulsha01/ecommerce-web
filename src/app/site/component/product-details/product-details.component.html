@@ -1,0 +1,45 @@
+<div class="container position-relative">
+  <app-header
+    [header]="2"
+    (headerIconClick)="backToMainPage($event)"
+  ></app-header>
+  <!-- <app-product-list></app-product-list> -->
+  <div class="d-flex product-img">
+    <img src="assets/png/perfume-large.png" alt="" srcset="" />
+  </div>
+
+  <!--Product Price and Image-->
+  <div class="d-flex price-section justify-content-between">
+    <div class="p-price">$229.00</div>
+    <div class="p-quantity">
+      <span class="active p-2 m-1">50ml</span>
+      <span class="p-2 m-1">100ml</span>
+    </div>
+  </div>
+
+  <!--Product Name and description-->
+
+  <div class="product-name-desc">
+    <div class="name">BVLGARI Rose Goldea</div>
+
+    <div class="star">
+      <img src="assets/svg/star.svg" alt="" srcset="" />
+      <span>4.50</span>
+    </div>
+
+    <div class="desc">
+      With its exclusive olfactory notes and its precious golden bottle, Rosa
+      Goldea embodys the essence of femininity.
+    </div>
+  </div>
+
+  <!--Action -->
+
+  <div class="my-3">
+    <button class="btn btn-custom mb-2" (click)="addToCart('id')">Add to cart</button>
+    <button class="btn btn-custom mb-5" (click)="buyNow()">Buy now</button>
+  </div>
+  <div class="mt-5" style="height: 100px"></div>
+  <app-footer></app-footer>
+  <app-site-details></app-site-details>
+</div>

@@ -1,0 +1,61 @@
+<div
+  class="d-flex justify-content-between mt-4 p-2 mb-4"
+  style="height: 31.919px"
+  *ngIf="header == 1"
+>
+  <div>
+    <img src="assets/svg/menu.svg" alt="menu" srcset="" />
+  </div>
+  <div>
+    <img src="assets/svg/pp.svg" alt="menu" srcset="" />
+  </div>
+  <div>
+    <img src="assets/svg/Vector.svg" alt="menu" srcset="" />
+  </div>
+</div>
+
+<div
+  class="d-flex justify-content-between mt-4 p-2 mb-4"
+  style="height: 31.919px"
+  *ngIf="header == 2"
+>
+  <div>
+    <img
+      src="assets/svg/back-arrow.svg"
+      alt="menu"
+      srcset=""
+      (click)="backToMainPage('back')"
+    />
+  </div>
+  <div>
+    <img src="assets/svg/pp.svg" alt="menu" srcset="" />
+  </div>
+  <div>
+    <img src="assets/svg/share.svg" alt="menu" srcset="" />
+  </div>
+</div>
+
+
+<div
+  class="d-flex justify-content-between mt-4 p-2 mb-4"
+  style="height: 31.919px"
+  *ngIf="header == 3"
+>
+  <div>
+    <img
+      src="assets/svg/back-arrow.svg"
+      alt="menu"
+      srcset=""
+      (click)="backToMainPage('back')"
+    />
+    <span class="headerTitle">
+        {{title}}
+    </span>
+  </div>
+  <!-- <div>
+    <img src="assets/svg/pp.svg" alt="menu" srcset="" />
+  </div> -->
+    <!-- <div>
+        <img src="assets/svg/share.svg" alt="menu" srcset="" />
+    </div> -->
+</div>

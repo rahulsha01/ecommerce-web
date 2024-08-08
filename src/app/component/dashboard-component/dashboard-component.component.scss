@@ -1,0 +1,14 @@
+.dashbord-container {
+    display: flex;
+    .left-panel {
+        flex-basis: 20%;
+    }
+    .right-panel {
+        flex-basis: 80%;
+        margin: 10px;
+    }
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}

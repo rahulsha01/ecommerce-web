@@ -1,0 +1,31 @@
+.signup-container {
+  font-family: "Dosis", sans-serif;
+  .title {
+    font-family: "Dosis", sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 43px;
+  }
+  .desc {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 133.333% */
+    text-transform: capitalize;
+    color: var(--Accent-body, #9ba4b0);
+  }
+  .form-container {
+    .login-link {
+      font-family: "Dosis", sans-serif;
+      color: #f83758;
+      text-align: center;
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      text-decoration-line: underline;
+    }
+  }
+}

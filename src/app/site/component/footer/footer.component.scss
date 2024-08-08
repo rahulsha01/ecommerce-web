@@ -1,0 +1,15 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #FFF;
+    .footer-container {
+flex-shrink: 0;
+margin: 10px 30px;
+border-radius: 10px 10px 0px 0px;
+background: #FFF;
+    }
+  }

@@ -1,0 +1,93 @@
+@import url('../../../styles.scss');
+.header-container {
+    .entity-title {
+        color: font-color;
+    }
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 10px;
+        .row {
+            margin: 0px;
+        }
+        ul {
+            margin: 0px;
+        }
+        ul.custom-breadcrumb {
+            padding: 5px 0px;
+            list-style: none;
+          }
+          ul.custom-breadcrumb li {
+            display: inline;
+            font-size: 12px;
+            .active-solid-blue  {
+                color: brown;
+            }
+          }
+          ul.custom-breadcrumb li+li:before {
+            padding: 8px;
+            color: #0e0e0e;
+            content: "/\00a0";
+          }
+          ul.custom-breadcrumb li a {
+            color: #0e0e0e;
+            text-decoration: none;
+          }
+          ul.custom-breadcrumb li a:hover {
+            color: #0f375a;
+            text-decoration: underline;
+          }
+        .header-title {
+           color: #0e0e0e;;
+        }
+        .log-out-container {
+            cursor: pointer;
+            .profile-container {
+                // margin: 0px 5px;
+                background: aliceblue;
+                border-radius: 50%;
+                height: 30px;
+                width: 30px;
+                position: relative;
+                cursor: pointer; 
+            span {
+                font-size: 18px;
+                position: absolute;
+                left: 9px;
+                color: #fff;
+                top: 5px;
+                cursor: pointer;
+            }
+            .profile-card {
+                position: absolute;
+                height: auto;
+                z-index: 9;
+                background-color: #fff;
+                box-shadow: 1px 1px 16px #ccc;
+                border-radius: 4px;
+                top: 35px;
+                cursor: pointer;
+                right: 0px;
+                width: auto;
+                .profile-details {
+                    font-size: 10px;
+                    margin: 10px;
+                    border-bottom: 1px solid rgb(0 0 0 / 12%);
+                }
+            }
+            .profile-details:hover {
+                color: brown;
+            }
+            }
+
+            }
+    // }
+
+    .displayNone {
+        display: none;
+    }
+
+    .inactive-solid-black {
+        color: #333;
+    }
+    
+}

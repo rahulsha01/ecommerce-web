@@ -1,0 +1,53 @@
+<div class="row table-container">
+  <div class="col-12">
+    <div class="table-part-list">
+      <table class="table table-striped">
+        <thead>
+          <ng-container
+            *ngTemplateOutlet="headerTemplate ? headerTemplate: defaultHeader; context:{$implicit: columns}">
+          </ng-container>
+        </thead>
+        <tbody>
+          <ng-template ngFor let-rowData let-rowIndex="index" [ngForOf]="values">
+            <ng-container
+              *ngTemplateOutlet="bodyTemplate ? bodyTemplate: (values.length > 0 ? defaultBody : blankBody); context:{$implicit: rowData,columns: columns , index:rowIndex }">
+            </ng-container>
+          </ng-template>
+        </tbody>
+      </table>
+      <mat-paginator [hidden]="isHiden" [length]="totalRecord" [pageSize]="perPage"  (page)="getPageEvent($event)" [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+
+
+<!-- Body Default Header Template -->
+<ng-template #defaultHeader let-columns>
+  <tr>
+    <th *ngFor="let column of columns">{{column.title}}</th>
+    <th>Action</th>
+  </tr>
+</ng-template>
+
+<!-- Body Default Template -->
+<ng-template #defaultBody let-item let-columns="columns">
+  <tr >
+    <ng-container *ngFor="let column of columns">
+      <td *ngIf="column?.type == 'string'">
+        <span>{{item[column.key]}}</span>
+      </td>
+      <td *ngIf="column?.type == 'img'" >
+        <img src={{item[column.key]}} class="is-default" alt="">
+      </td>
+    </ng-container>
+    <td>
+      <img src="assets/img/edit.svg" class="img-fluid mr-2" (click)="editForm(item)">
+      <img src="assets/img/delete.svg" class="img-fluid mr-2" (click)="deleteForm(item)">
+    </td>
+  </tr>
+</ng-template>
+
+<ng-template #blankBody>
+  <div>No Record Found</div>
+</ng-template>

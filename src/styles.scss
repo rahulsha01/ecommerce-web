@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+html, body { height: 100%;
+    background: #FBFBFB; }
+body { 
+    margin: 0;  
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
+$font-color: #A6ABC8;
+
+
+.btn-custom {
+    display: flex;
+width: 100%;
+padding: 16px 32px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+color: #FFFFFF;
+border-radius: 4px 14px;
+background: #262825;
+box-shadow: 0px 64px 18px 0px rgba(0, 0, 0, 0.00), 0px 41px 16px 0px rgba(0, 0, 0, 0.02), 0px 23px 14px 0px rgba(0, 0, 0, 0.08), 0px 10px 10px 0px rgba(0, 0, 0, 0.13), 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+}

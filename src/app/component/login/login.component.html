@@ -1,0 +1,33 @@
+<div class="login-container">
+        <div class="left-container">
+          <h1>Welcome to Dashboard!</h1>
+          <img src="assets/png/Rectangle.png" alt="" srcset="">
+          <img src="assets/png/clip-message-sent 1.png" class="welcome-icon" alt="" srcset="">
+        </div>
+        <div class="form-container">
+            <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                  <mat-form-field >
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput  name="email" #email="ngModel" ngModel email id="email"
+                           placeholder="Ex. pat@example.com" autocomplete="off" autofocus="true
+                           ">
+                    <mat-hint>Enter Email here!</mat-hint>
+                    <mat-error *ngIf="email.touched && !email.valid">Please Enter Email
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput  name="pwd" #pwd="ngModel" ngModel  id="pwd"
+                           placeholder="Enter Password">
+                    <mat-hint>Max 6 character !</mat-hint>
+                    <mat-error *ngIf="pwd.touched && !pwd.valid">Please Enter Password
+                    </mat-error>
+                  </mat-form-field>
+                
+                  <div >
+                    <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!loginForm.valid">Login</button>
+                  </div>
+            </form>
+        </div>
+</div>

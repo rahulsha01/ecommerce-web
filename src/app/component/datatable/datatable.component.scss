@@ -1,0 +1,99 @@
+.table {
+  width: 100%;
+}
+.table-container {
+  margin: 10px 10px;
+}
+.table-part-list {
+  background-color: #fff;
+  color: #454F63;
+  border-radius: 3px;
+  box-shadow: 0 2px 7px rgba(20, 20, 20, .16);
+  padding: 5px 10px;
+  text-align: left;
+    font-weight: 700;
+}
+
+.table-part-list tbody tr {
+  cursor: pointer;
+}
+
+.table-part-list th {
+  color: rgba(69, 79, 99, .5);
+  font-size: 12px;
+  border: none !important;
+  text-transform: uppercase;
+  text-align: left;
+  font-weight: 700;
+}
+
+.table-part-list th img {
+  margin-left: 2px;
+}
+
+.table-part-list td {
+  color: #454f63;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: left;
+  padding: 10px;
+}
+
+.table-part-list tbody tr:nth-of-type(odd) {
+  background-color: #EFEFEF;
+}
+
+.table-part-list tbody td:first-child {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.table-part-list tbody td:last-child {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.table-part-list tbody tr:hover {
+  background-color: #E4F2F3;
+}
+
+.table-part-list tbody tr .custom-checkbox .checkmark {
+  border: 1px solid #a3a8b20d;
+}
+
+.table-part-list tbody tr:hover .custom-checkbox .checkmark {
+  border: 1px solid #A3A8B2;
+}
+
+.table-part-list tbody td img {
+  width: 15px;
+}
+
+.parts-pagination .page-link {
+  border: none !important;
+  color: #454f63;
+  font-size: 12px;
+  margin-right: 5px;
+  padding: 6px 10px;
+}
+
+.parts-pagination .page-link:hover {
+  background-color: transparent;
+}
+
+.parts-pagination .page-item.active .page-link {
+  border-radius: 30%;
+color: #fff;
+  background: linear-gradient(to right, #eea849, #f46b45);
+}
+
+.parts-pagination .page-item.active .page-link:hover {
+  color: #fff;
+}
+.img-fluid {
+  margin: 0px 10px;
+}
+.is-default {
+  width: 45px !important;
+}

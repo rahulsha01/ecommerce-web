@@ -1,0 +1,28 @@
+<div class="header-container">
+       
+            <span class="entity-title">{{PageTitle}}</span>
+            <span class="log-out-container">
+                <div class="profile-container" [ngStyle]="{'background-color': color}" (click)="openCard()">
+                    <span>
+                        {{usernameChar | uppercase}}
+                    </span>
+                    <div class="profile-card"  [ngClass]="{'displayNone': isProfileCard}" >
+                        <div class="profile-details">
+                            WELECOME, {{username}}
+                        </div>
+                        <div class="profile-details">
+                            {{userEmail}}
+                        </div>
+                        <div class="profile-details" (click)="logout()">
+                           Logout
+                        </div>
+                    </div>
+                </div>
+            </span>
+        
+       
+       </div>
+               
+           
+        <!-- </div> -->
+<!-- </div> -->

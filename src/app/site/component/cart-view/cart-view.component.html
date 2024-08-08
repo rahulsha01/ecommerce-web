@@ -1,0 +1,110 @@
+<div class="container position-relative">
+  <app-header
+    [header]="3"
+    [title]="'Shopping Cart'"
+    (headerIconClick)="backToPage($event)"
+  ></app-header>
+
+  <ul class="cart-list-view">
+    <li class="card">
+      <div class="order-img d-flex">
+        <img
+          src="assets/png/perfume-large.png"
+          alt="order-img"
+          class=""
+          srcset=""
+        />
+        <div class="product-name">
+          <span> lamerei </span>
+          <div class="desc">Recycle Boucle Knit Cardigan Pink</div>
+          <div class="quatitly-couter">
+            <img src="assets/svg/minus.svg" alt="" srcset="" />
+            <span class="counter">1</span>
+            <img src="assets/svg/Plus.svg" alt="" srcset="" />
+          </div>
+          <div class="price">₹1200</div>
+        </div>
+      </div>
+    </li>
+
+    <li class="card">
+      <div class="order-img d-flex">
+        <img
+          src="assets/png/perfume-large.png"
+          alt="order-img"
+          class=""
+          srcset=""
+        />
+        <div class="product-name">
+          <span> lamerei </span>
+          <div class="desc">Recycle Boucle Knit Cardigan Pink</div>
+          <div class="quatitly-couter">
+            <img src="assets/svg/minus.svg" alt="" srcset="" />
+            <span class="counter">1</span>
+            <img src="assets/svg/Plus.svg" alt="" srcset="" />
+          </div>
+          <div class="price">₹1200</div>
+        </div>
+      </div>
+    </li>
+
+    <li class="card">
+      <div class="order-img d-flex">
+        <img
+          src="assets/png/perfume-1.png"
+          alt="order-img"
+          class=""
+          srcset=""
+        />
+        <div class="product-name">
+          <span> lamerei </span>
+          <div class="desc">Recycle Boucle Knit Cardigan Pink</div>
+          <div class="quatitly-couter">
+            <img src="assets/svg/minus.svg" alt="" srcset="" />
+            <span class="counter">1</span>
+            <img src="assets/svg/Plus.svg" alt="" srcset="" />
+          </div>
+          <div class="price">₹1200</div>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <ul class="payment-detail-container">
+    <li>Payment Details</li>
+    <li>
+      <div class="d-flex justify-content-between">
+        <div>Price (1 items)</div>
+        <div>₹1200</div>
+      </div>
+    </li>
+    <li>
+      <div class="d-flex justify-content-between">
+        <div>Total Discount</div>
+        <div>₹200</div>
+      </div>
+    </li>
+    <li>
+      <div class="d-flex justify-content-between">
+        <div>Shipping Charges</div>
+        <div>- ₹50</div>
+      </div>
+    </li>
+    <hr />
+    <li>Total</li>
+  </ul>
+
+  <div class="pay-section d-flex justify-content-between"
+  >
+    <div class="total-pay">
+        ₹5012.0
+    </div>
+    <div class="m-3">
+        <button class="btn btn-custom mb-2" style="height: 50px;
+    padding: 5px 35px;">Pay</button>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+  <app-site-details></app-site-details>
+</div>

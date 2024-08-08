@@ -1,0 +1,45 @@
+<div class="left-container">
+
+    <ng-container *ngIf="isSidePanelOpen; then openSidePanel else closeSidePanel"> </ng-container>
+    <ng-template #openSidePanel>
+        <div class="openSidePanel">
+            <div class="sidenav-open">
+                <div class="menu-section">
+                    <h3 class="title">
+                        <img src="assets/png/working.png"  alt="" srcset="">
+                        <span>{{ userName }}</span>
+                    </h3>
+                </div>
+                <hr>
+                <ng-container *ngFor="let item of menuItem;let i = index">
+                    <div class="accordion" [routerLink]="item.link" routerLinkActive="active">
+                        <img src="assets/svg/right.svg" style="width: 20px;" alt="" srcset="">
+                        {{item.label}}
+                        <span [class.arrowDown]="selectedIndex === i && item.isHasChild.length > 0"></span>
+                        <span [class.arrowUp]="selectedIndex !== i && item.isHasChild.length > 0"></span>
+                    </div>
+                    <div class="panel" [class.displayBLK]="selectedIndex === i"
+                        [class.displayNone]="selectedIndex !== i">
+                        <ul *ngIf="item.isHasChild.length > 0">
+                            <li *ngFor="let child of item?.isHasChild; let j = index" (click)="setChildIndex(j)"
+                                [class.childactive]="selectChildIndex === j">
+                                <span id="star-five"></span>
+                                <a href="{child?.link}" class="menu-anchor">
+                                    {{child}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+    </ng-template>
+    <ng-template #closeSidePanel>
+        <div class="closeSidePanel">
+            <img src="../../../assets/svg/play-button.svg" alt="test" class="arrow-close" (click)="toggle()">
+            <div class="sidenav-close"></div>
+        </div>
+    </ng-template>
+</div>
+
+<router-outlet></router-outlet>
