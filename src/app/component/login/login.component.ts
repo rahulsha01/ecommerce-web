@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     this.httpService.authenticate(loginform.value.email , loginform.value.pwd).subscribe(res => {
       console.log(res);
       if(res.status == 'success') {
-        res.data.role != 'Admin' ? this.showSnankbar(res) : this.router.navigateByUrl('admin/dashboard')
+        res.data.role != 'admin' ? this.showSnankbar(res) : this.router.navigateByUrl('admin/dashboard')
         sessionStorage.setItem('token', res.token);
         sessionStorage.setItem('userDetails', JSON.stringify(res.data))
       } else {

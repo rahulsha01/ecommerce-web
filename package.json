@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -22,6 +23,7 @@
     "@angular/router": "^18.1.0",
     "@auth0/angular-jwt": "^5.0.2",
     "bootstrap": "^5.3.3",
+    "eccomerce": "file:",
     "moment": "^2.29.1",
     "ngx-spinner": "^17.0.0",
     "rxjs": "~7.8.0",

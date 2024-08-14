@@ -11,7 +11,7 @@ pipeline {
             steps {
                 // Checkout your code from version control
                 https://github.com/rahulsha01/eccommerce-webapi/tree/master/public/web/eccomerce
-                git 'https://github.com/your-repository/your-angular-project.git'
+                git 'https://github.com/rahulsha01/ecommerce-web.git'
             }
         }
         

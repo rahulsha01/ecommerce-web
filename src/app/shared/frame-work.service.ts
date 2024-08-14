@@ -82,7 +82,7 @@ export class FrameWorkService {
       let role = atob(token?.split('.')[1])
       let data = JSON.parse(role);
       console.log(role);
-      if(data['role'] != 'Admin') {
+      if(data['role'] != 'admin') {
         return false;
       }
       if (helper.isTokenExpired(token) === true ) {

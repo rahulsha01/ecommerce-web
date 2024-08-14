@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LeftNavComponent } from './component/left-nav/left-nav.component';
 import { DashboardComponent } from './component/dashboard-component/dashboard-component.component';
-import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonHeaderComponent } from './component/common-header/common-header.component';
 import { GridToolComponent } from './component/grid-tool/grid-tool.component';
@@ -35,20 +34,21 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { CategoryComponent } from './component/category/category.component';
 import { UserComponent } from './component/user/user.component';
 import { ProductTableComponent } from './component/product-table/product-table.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 
 const routes:Routes = [
-  { path: '**' , redirectTo: 'home', pathMatch:'full'  },
   { path: 'admin/login', component: LoginComponent },
   {path: 'admin/dashboard', component: DashboardComponent ,  canActivate: [AuthGuard]},
   { path: 'admin/category', component: CategoryComponent , canActivate: [AuthGuard] },
   { path: 'admin/user', component: UserComponent , canActivate: [AuthGuard] },
   
-    {
-      path : 'home', 
-      loadChildren : () => import('./site/site.module').then((site) => site.SiteModule )
-    }
+  {
+    path : 'home', 
+    loadChildren : () => import('./site/site.module').then((site) => site.SiteModule )
+  },
+  // { path: '**' , redirectTo: 'home', pathMatch:'full'  },
 ]
 @NgModule({
   declarations: [
@@ -85,6 +85,7 @@ const routes:Routes = [
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [   
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }, 
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 1000}}, provideAnimationsAsync()],
   bootstrap: [AppComponent]
