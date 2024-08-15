@@ -48,7 +48,7 @@ const routes:Routes = [
     path : 'home', 
     loadChildren : () => import('./site/site.module').then((site) => site.SiteModule )
   },
-  // { path: '**' , redirectTo: 'home', pathMatch:'full'  },
+  { path: '**' , redirectTo: 'home', pathMatch:'full'  },
 ]
 @NgModule({
   declarations: [
