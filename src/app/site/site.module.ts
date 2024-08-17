@@ -18,6 +18,7 @@ Angular Material Module
 import {MatInputModule} from '@angular/material/input';
 import { SignupPageComponent } from './component/signup-page/signup-page.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { SidebarComponent } from './component/sidebar/sidebar.component';
 
 const routes: Routes = [{
   path : '' , 
@@ -43,7 +44,8 @@ const routes: Routes = [{
     CartViewComponent,
     LoginPageComponent,
     SignupPageComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,

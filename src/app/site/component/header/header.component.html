@@ -4,7 +4,7 @@
   *ngIf="header == 1"
 >
   <div>
-    <img src="assets/svg/menu.svg" alt="menu" srcset="" />
+    <img src="assets/svg/menu.svg" alt="menu" srcset="" (click)="openSidebar()" />
   </div>
   <div>
     <img src="assets/svg/pp.svg" alt="menu" srcset="" />
@@ -59,3 +59,8 @@
         <img src="assets/svg/share.svg" alt="menu" srcset="" />
     </div> -->
 </div>
+
+<ng-container *ngIf="isSidebarOpen">
+  <app-sidebar (dismiss)="onDismiss()"></app-sidebar>
+
+</ng-container>
