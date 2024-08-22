@@ -12,7 +12,7 @@
            
             <ng-container #gridContainer></ng-container>
             <ng-template #gridTemplate>
-                <app-datatable [columns]="userColumns" [values]="productList"
+                <app-datatable [columns]="productColumns" [values]="productList"
                     (changePageSizeEvent)="changePageSize($event)" (editFormEventEmitter)="getEditRowValue($event)"
                     (deleteFormEventEmitter)="deleteuserRecord($event)"
                      [totalRecord]="totalRecords" [perPage]="5">

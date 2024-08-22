@@ -1,4 +1,4 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { Component, ContentChild, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 
@@ -13,8 +13,12 @@ export interface PeriodicElement {
   templateUrl: './datatable.component.html',
   styleUrls: ['./datatable.component.scss']
 })
-export class DatatableComponent implements OnInit {
+export class DatatableComponent implements OnInit , OnChanges {
   constructor() { }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.rowData);
+    
+  }
   @Input() rowData: any;
   isHiden: boolean = true;
   @Input()

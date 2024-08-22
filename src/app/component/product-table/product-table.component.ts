@@ -20,7 +20,7 @@ export class ProductTableComponent {
   pageTitle: string = "Product Management";
   userForm: NgForm | undefined;
   authorsData = [];
-  userColumns = [
+  productColumns = [
     { title: 'Product Name', key: 'productName', type : 'string' },
     { title: 'Weight', key: 'product_weight', type : 'string' },
 
@@ -30,7 +30,7 @@ export class ProductTableComponent {
 
     { title: 'Stock Quantity', key: 'productStockQuantity', type : 'string' },
 
-    { title: 'Images', key: 'productImagesUrl', type : 'string' }];
+    { title: 'Images', key: 'productImagesUrl', type : 'img' }];
   totalRecords: number | undefined;
   perPage: number = 5;
   productList: any;
@@ -97,7 +97,7 @@ export class ProductTableComponent {
   getListOfProduct() {
     this.httpService.getProduct().subscribe(res => {
       console.log(res);
-      if(res.status == 'success') {
+      if(res.status) {
         this.productList = res.data;
         console.log(this.productList);
         this.totalRecords = res.data.length;
