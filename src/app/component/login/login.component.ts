@@ -17,21 +17,28 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(loginform: any)  {
-    console.log(loginform.value.email);
-    console.log('request for login')
-    this.httpService.authenticate(loginform.value.email , loginform.value.pwd).subscribe(res => {
-      console.log(res);
-      if(res.status == 'success') {
-        res.data.role != 'admin' ? this.showSnankbar(res) : this.router.navigateByUrl('admin/dashboard')
+  login(loginForm: any): void {
+  const { email, pwd } = loginForm.value;
+  this.httpService.authenticate(email, pwd).subscribe({
+    next: (res) => {
+      if (res.status === 'success') {
+        const destination = res.data.role.toLowerCase() === 'admin' ? 'admin/dashboard' : 'admin/login';
+        if (destination) {
+          this.router.navigateByUrl(destination);
+        }
         sessionStorage.setItem('token', res.token);
-        sessionStorage.setItem('userDetails', JSON.stringify(res.data))
+        sessionStorage.setItem('userDetails', JSON.stringify(res.data));
       } else {
-        this.showSnankbar(res)
+        this.showSnankbar(res);
       }
-      
-    })
-  }
+    },
+    error: (err) => {
+      console.error('Login request failed', err);
+      this.showSnankbar(err)
+    }
+  });
+}
+
 
   showSnankbar(res : any) {
     this.httpService.openSnankBar('Failed to Login');

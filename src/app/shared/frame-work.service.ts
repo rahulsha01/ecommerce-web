@@ -82,7 +82,7 @@ export class FrameWorkService {
       let role = atob(token?.split('.')[1])
       let data = JSON.parse(role);
       console.log(role);
-      if(data['role'] != 'admin') {
+      if(data['role'].toLowerCase() != 'admin') {
         return false;
       }
       if (helper.isTokenExpired(token) === true ) {
@@ -118,6 +118,11 @@ export class FrameWorkService {
     let url = `${ENDPOINT.getuserList}`;
     return this.http.get(url);
   }
+
+  getProduct() : Observable<any> {
+    let url = `${ENDPOINT.getProductList}`;
+    return this.http.get(url);
+  } 
 
 
 }

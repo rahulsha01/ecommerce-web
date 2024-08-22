@@ -43,12 +43,13 @@ const routes:Routes = [
   {path: 'admin/dashboard', component: DashboardComponent ,  canActivate: [AuthGuard]},
   { path: 'admin/category', component: CategoryComponent , canActivate: [AuthGuard] },
   { path: 'admin/user', component: UserComponent , canActivate: [AuthGuard] },
+  { path: 'admin/product', component: ProductTableComponent , canActivate: [AuthGuard] },
   
   {
     path : 'home', 
     loadChildren : () => import('./site/site.module').then((site) => site.SiteModule )
   },
-  { path: '**' , redirectTo: 'home', pathMatch:'full'  },
+  // { path: '**' , redirectTo: 'home'  },
 ]
 @NgModule({
   declarations: [
