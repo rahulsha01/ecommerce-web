@@ -1,23 +1,39 @@
 <div class="main-container">
-    <div class="dashbord-container">
-        <div class="left-panel">
-            <app-left-nav></app-left-nav>
-        </div>
-        <div class="right-panel">
-            <app-common-header [breadCrumbObject]="data" [PageTitle]="pageTitle"></app-common-header>
-            <ng-container #toolbarContainer></ng-container>
-            <ng-template #toolbarTemplate>
-                <app-grid-tool (handleAddRowEvent)="createForm($event)" (handleRefreshEvent)="refreshGrid()"></app-grid-tool>
-            </ng-template>
-           
-            <ng-container #gridContainer></ng-container>
-            <ng-template #gridTemplate>
-                <app-datatable [columns]="productColumns" [values]="productList"
-                    (changePageSizeEvent)="changePageSize($event)" (editFormEventEmitter)="getEditRowValue($event)"
-                    (deleteFormEventEmitter)="deleteuserRecord($event)"
-                     [totalRecord]="totalRecords" [perPage]="5">
-                </app-datatable>
-            </ng-template>
-        </div>
+  <div class="dashbord-container">
+    <div class="left-panel">
+      <app-left-nav></app-left-nav>
     </div>
+    <div class="right-panel">
+      <app-common-header
+        [breadCrumbObject]="data"
+        [PageTitle]="pageTitle"
+      ></app-common-header>
+      <ng-container #toolbarContainer></ng-container>
+      <ng-template #toolbarTemplate>
+        <app-grid-tool
+          (handleAddRowEvent)="createForm($event)"
+          (handleRefreshEvent)="refreshGrid()"
+        ></app-grid-tool>
+      </ng-template>
+
+      <ng-container #gridContainer></ng-container>
+      <ng-template #gridTemplate>
+        <app-datatable
+          [columns]="productColumns"
+          [values]="productList"
+          (changePageSizeEvent)="changePageSize($event)"
+          (editFormEventEmitter)="getEditRowValue($event)"
+          (deleteFormEventEmitter)="deleteuserRecord($event)"
+          [totalRecord]="totalRecords"
+          [perPage]="5"
+        >
+        </app-datatable>
+      </ng-template>
+      <ng-container #formContainer></ng-container>
+      <ng-template #formTemplate>
+        <app-common-reactive-form [fields]="fields" formTitle="Add Product">
+        </app-common-reactive-form>
+      </ng-template>
+    </div>
+  </div>
 </div>

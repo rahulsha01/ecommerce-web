@@ -124,5 +124,9 @@ export class FrameWorkService {
     return this.http.get(url);
   } 
 
+  addEntity(url: string, payload: any): Observable<any> {
+    return this.http.post(url, payload);
+  }
+
 
 }

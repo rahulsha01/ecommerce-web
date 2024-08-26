@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild, ViewConta
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Sort } from '@angular/material/sort';
 import { FrameWorkService } from '../../shared/frame-work.service';
+import { ENDPOINT } from '../../config/config';
 
 export interface Order {
   id: number;
@@ -38,6 +39,9 @@ export class CategoryComponent implements OnInit {
   isUpdate: boolean | undefined = false;
   recordId: any;
   translationKeyword: string= "";
+  fields: any = [ 
+     { "type": "text", "label": "Name", "name": "category_name", "placeholder": "Enter Category Name" },
+     { "type": "textarea", "label": "Description", "name": "category_desc", "placeholder": "Enter Category Description" }]
 
 
 
@@ -71,12 +75,12 @@ export class CategoryComponent implements OnInit {
   createForm(event:any) {
     console.log(event);
     
-    this.categoryname = "";
-    this.recordId = "";
-    this.status = true;
-    this.preferenceOrder = "";
-    this.translationKeyword= ""
-    this.isUpdate = false;
+    // this.categoryname = "";
+    // this.recordId = "";
+    // this.status = true;
+    // this.preferenceOrder = "";
+    // this.translationKeyword= ""
+    // this.isUpdate = false;
     this.gridContainerRef?.clear();
     this.loadFromModule();
   }
@@ -135,6 +139,15 @@ export class CategoryComponent implements OnInit {
     this.loadGridModule();
   }
 
+  saveCategoary(event: any) {
+    console.log(event);
+    this.httpService.addEntity(ENDPOINT.addCategory, event.formData).subscribe(res => {
+      console.log(res)
+      this.httpService.openErrorSnakBar('Suceessfully Added')
+      this.formContainerRef?.clear();
+      this.loadGridModule()
+    })
+  }
 }
 
 export interface Category {

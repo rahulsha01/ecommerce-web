@@ -28,9 +28,7 @@ export class ProductTableComponent {
 
     { title: 'Price', key: 'productPrice', type : 'string' },
 
-    { title: 'Stock Quantity', key: 'productStockQuantity', type : 'string' },
-
-    { title: 'Images', key: 'productImagesUrl', type : 'img' }];
+    { title: 'Stock Quantity', key: 'productStockQuantity', type : 'string' }];
   totalRecords: number | undefined;
   perPage: number = 5;
   productList: any;
@@ -40,6 +38,16 @@ export class ProductTableComponent {
   isUpdate: boolean | undefined = false;
   recordId: any;
   translationKeyword: string= "";
+  fields = [
+    { "type": "text", "label": "First name", "name": "firstName", "placeholder": "Enter name" },
+    { "type": "textarea", "label": "Address", "name": "address", "placeholder": "Ex. 100 Main St" },
+    { "type": "radio", "label": "Options", "name": "options", "options": [{ "value": "1", "viewValue": "Option 1" }, { "value": "2", "viewValue": "Option 2" }] },
+    { "type": "checkbox", "label": "Disabled", "name": "disabled" },
+    { "type": "number", "label": "Number", "name": "number", "placeholder": "Enter number" },
+    { "type": "email", "label": "Email", "name": "email", "placeholder": "Enter email" },
+    { "type": "file-upload", "label": "Upload Images", "name": "file" },
+    { "type": "select", "label": "Favorite car", "name": "car", "options": [{ "value": "car1", "viewValue": "Car 1" }, { "value": "car2", "viewValue": "Car 2" }] }
+  ]
 
 
 
@@ -50,6 +58,7 @@ export class ProductTableComponent {
     this.setHeaderConfig();
     this.loadToolBarModule();
     this.loadGridModule();
+    // this.loadFromModule()
     this.getListOfProduct();
 
   }
@@ -71,14 +80,22 @@ export class ProductTableComponent {
   }
 
   createForm(event:any) {
-    console.log(event);
-    
-    this.username = "";
-    this.recordId = "";
-    this.status = true;
-    this.preferenceOrder = "";
-    this.translationKeyword= ""
-    this.isUpdate = false;
+    // this.username = "";
+    // this.recordId = "";
+    // this.status = true;
+    // this.preferenceOrder = "";
+    // this.translationKeyword= ""
+    // this.isUpdate = false;
+    this.fields = [
+      { "type": "text", "label": "First name", "name": "firstName", "placeholder": "Enter name" },
+      { "type": "textarea", "label": "Address", "name": "address", "placeholder": "Ex. 100 Main St" },
+      { "type": "radio", "label": "Options", "name": "options", "options": [{ "value": "1", "viewValue": "Option 1" }, { "value": "2", "viewValue": "Option 2" }] },
+      { "type": "checkbox", "label": "Disabled", "name": "disabled" },
+      { "type": "number", "label": "Number", "name": "number", "placeholder": "Enter number" },
+      { "type": "email", "label": "Email", "name": "email", "placeholder": "Enter email" },
+      { "type": "file-upload", "label": "Upload Images", "name": "file" },
+      { "type": "select", "label": "Favorite car", "name": "car", "options": [{ "value": "car1", "viewValue": "Car 1" }, { "value": "car2", "viewValue": "Car 2" }] }
+    ]
     this.gridContainerRef?.clear();
     this.loadFromModule();
   }

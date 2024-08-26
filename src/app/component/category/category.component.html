@@ -18,6 +18,12 @@
                      [totalRecord]="totalRecords" [perPage]="5">
                 </app-datatable>
             </ng-template>
+
+            <ng-container #formContainer></ng-container>
+            <ng-template #formTemplate>
+              <app-common-reactive-form [fields]="fields" (emitFormData)="saveCategoary($event)" formTitle="Add Category">
+              </app-common-reactive-form>
+            </ng-template> 
         </div>
     </div>
 </div>

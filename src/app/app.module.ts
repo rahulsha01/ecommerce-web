@@ -19,24 +19,26 @@ import {MatSelectModule} from '@angular/material/select';
 
 
 // Module
-import {MatTableModule} from '@angular/material/table';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatCardModule} from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxSpinnerModule } from "ngx-spinner";
-import {MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/material/snack-bar';
-import {MatPaginatorModule} from '@angular/material/paginator';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import { CategoryComponent } from './component/category/category.component';
 import { UserComponent } from './component/user/user.component';
 import { ProductTableComponent } from './component/product-table/product-table.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
-
+// Material Import 
+import {MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/material/snack-bar';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+import { SharedModule } from './shared/shared.module';
 
 const routes:Routes = [
   { path: 'admin/login', component: LoginComponent },
@@ -82,7 +84,16 @@ const routes:Routes = [
     MatSnackBarModule,
     MatSelectModule,
     MatPaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    SharedModule
+  ],
+  exports: [
+    MatTableModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [   
