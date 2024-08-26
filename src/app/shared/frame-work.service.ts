@@ -128,5 +128,9 @@ export class FrameWorkService {
     return this.http.post(url, payload);
   }
 
+  deleteEntity(url: string) : Observable<any>{
+      return this.http.delete(url);
+  }
+
 
 }

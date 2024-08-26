@@ -115,19 +115,26 @@ export class CategoryComponent implements OnInit {
 
 
   getEditRowValue(value: any) {
-    this.isUpdate = true;
+    // this.isUpdate = true;
+    console.log(value);
+    
     this.gridContainerRef?.clear();
-    this.categoryname = value.item.categoryname;
-    this.status = value.item.status == "true" ? true : false;
-    this.recordId = value.item.id;
-    this.translationKeyword = value.item.translationKeyword;
-    this.preferenceOrder = value.item.preferenceOrder;
+    // this.categoryname = value.item.categoryname;
+    // this.status = value.item.status == "true" ? true : false;
+    // this.recordId = value.item.id;
+    // this.translationKeyword = value.item.translationKeyword;
+    // this.preferenceOrder = value.item.preferenceOrder;
     this.loadFromModule();
   }
 
   deleteCategoryRecord(val:any) {
-    if(confirm("Are you sure to delete "+val.item.categoryname)) {
-      console.log("Implement delete functionality here");
+    if(confirm("Are you sure to delete "+val.item.category_name)) {
+      let url = `category/${val.item._id}/delete`
+      this.httpService.deleteEntity(url).subscribe(res => {
+        if(res) {
+          this.httpService.openSnankBar('Deleted Successfully')
+        }
+      })
     this.getListOfCategory();
   }
   }
@@ -145,9 +152,12 @@ export class CategoryComponent implements OnInit {
       console.log(res)
       this.httpService.openErrorSnakBar('Suceessfully Added')
       this.formContainerRef?.clear();
-      this.loadGridModule()
+      this.getListOfCategory();
+      this.loadGridModule();
     })
   }
+
+ 
 }
 
 export interface Category {

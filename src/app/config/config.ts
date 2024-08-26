@@ -3,5 +3,6 @@ export const ENDPOINT = {
     'getCategory': 'category/getCategory',
     'getuserList': 'user/getAllUser',
     'getProductList': 'product/getproduct',
-    'addCategory': 'category/createCategory'
+    'addCategory': 'category/createCategory',
+    'deleteCategory': `/delete`
 }
