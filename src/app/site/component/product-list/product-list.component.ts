@@ -12,12 +12,16 @@ export class ProductListComponent {
   constructor(
     private router : Router
   ) {
-
+      this.getProductList()
   }
 
 
   viewProductDetails(id: any) {
     this.router.navigateByUrl('product-details')
+  }
+
+  getProductList() {
+    
   }
 
 }

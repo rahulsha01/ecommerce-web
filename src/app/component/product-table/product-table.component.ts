@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBuilder, NgForm } from '@angular/forms';
 import { FrameWorkService } from '../../shared/frame-work.service';
+import { ENDPOINT } from '../../config/config';
 
 @Component({
   selector: 'app-product-table',
@@ -28,6 +29,8 @@ export class ProductTableComponent {
 
     { title: 'Price', key: 'productPrice', type : 'string' },
 
+
+    { title: 'Product Image', key: 'productImages', type : 'img' },
     { title: 'Stock Quantity', key: 'productStockQuantity', type : 'string' }];
   totalRecords: number | undefined;
   perPage: number = 5;
@@ -38,16 +41,7 @@ export class ProductTableComponent {
   isUpdate: boolean | undefined = false;
   recordId: any;
   translationKeyword: string= "";
-  fields = [
-    { "type": "text", "label": "First name", "name": "firstName", "placeholder": "Enter name" },
-    { "type": "textarea", "label": "Address", "name": "address", "placeholder": "Ex. 100 Main St" },
-    { "type": "radio", "label": "Options", "name": "options", "options": [{ "value": "1", "viewValue": "Option 1" }, { "value": "2", "viewValue": "Option 2" }] },
-    { "type": "checkbox", "label": "Disabled", "name": "disabled" },
-    { "type": "number", "label": "Number", "name": "number", "placeholder": "Enter number" },
-    { "type": "email", "label": "Email", "name": "email", "placeholder": "Enter email" },
-    { "type": "file-upload", "label": "Upload Images", "name": "file" },
-    { "type": "select", "label": "Favorite car", "name": "car", "options": [{ "value": "car1", "viewValue": "Car 1" }, { "value": "car2", "viewValue": "Car 2" }] }
-  ]
+  fields: any
 
 
 
@@ -86,18 +80,23 @@ export class ProductTableComponent {
     // this.preferenceOrder = "";
     // this.translationKeyword= ""
     // this.isUpdate = false;
-    this.fields = [
-      { "type": "text", "label": "First name", "name": "firstName", "placeholder": "Enter name" },
-      { "type": "textarea", "label": "Address", "name": "address", "placeholder": "Ex. 100 Main St" },
-      { "type": "radio", "label": "Options", "name": "options", "options": [{ "value": "1", "viewValue": "Option 1" }, { "value": "2", "viewValue": "Option 2" }] },
-      { "type": "checkbox", "label": "Disabled", "name": "disabled" },
-      { "type": "number", "label": "Number", "name": "number", "placeholder": "Enter number" },
-      { "type": "email", "label": "Email", "name": "email", "placeholder": "Enter email" },
-      { "type": "file-upload", "label": "Upload Images", "name": "file" },
-      { "type": "select", "label": "Favorite car", "name": "car", "options": [{ "value": "car1", "viewValue": "Car 1" }, { "value": "car2", "viewValue": "Car 2" }] }
-    ]
-    this.gridContainerRef?.clear();
-    this.loadFromModule();
+    this.httpService.getCategory().subscribe(res => {
+      console.log(res);
+      if(res) {
+        this.fields = [
+          { "type": "text", "label": "Product Name", "key": "productName", "placeholder": "Enter name" },
+          { "type": "textarea", "label": "Description", "key": "productDescription", "placeholder": "Description" },
+          { "type": "number", "label": "Product Price", "key": "productPrice", "placeholder": "Product Price" },
+          { "type": "text", "label": "Product Weight", "key": "product_weight", "placeholder": "Product Price" },
+          { "type": "number", "label": "Product Quantity", "key": "productStockQuantity", "placeholder": "Enter Quantity" },
+          { "type": "file-upload", "label": "Upload Images", "key": "productImages" },
+          { "type": "select", "label": "Category", "key": "category_id", 'viewValue': 'category_name',  "options": res.data }
+        ]
+        this.gridContainerRef?.clear();
+        this.loadFromModule();
+      }
+      
+    })
   }
 
   cancel() {
@@ -139,11 +138,17 @@ export class ProductTableComponent {
     this.loadFromModule();
   }
 
-  deleteuserRecord(val:any) {
-    if(confirm("Are you sure to delete "+val.item.username)) {
-      console.log("Implement delete functionality here");
-    this.getListOfProduct();
+  deleteProductById(val:any) {
+    if(confirm("Are you sure to delete "+val.item._id.toString().trim())) {
+      let url = `product/${val.item._id.toString().trim() }/delete`
+      this.httpService.deleteEntity(url).subscribe(res => {
+        if(res) {
+          this.httpService.openSnankBar('Deleted Successfully')
+        }
+      })
+      this.getListOfProduct();
   }
+  
   }
 
   checkuserIsUsed(val: any) {
@@ -151,5 +156,20 @@ export class ProductTableComponent {
 
   refreshGrid() {
     this.loadGridModule();
+  }
+
+  saveProduct(formData: any) {
+    console.log(formData);
+    const url = ENDPOINT.addProduct;
+    const payload = formData.formData;
+
+    this.httpService.addProductEntity(url ,payload ).subscribe(res => {
+      console.log(res)
+      if(res) {
+        this.httpService.openSnankBar("Product added Sucessfully")
+        this.formContainerRef?.clear();
+        this.loadGridModule();
+      }
+    })
   }
 }

@@ -4,5 +4,7 @@ export const ENDPOINT = {
     'getuserList': 'user/getAllUser',
     'getProductList': 'product/getproduct',
     'addCategory': 'category/createCategory',
-    'deleteCategory': `/delete`
+    'deleteCategory': `/delete`,
+    'deleteProduct' : '/product/delete',
+    'addProduct': 'product/createproduct'
 }

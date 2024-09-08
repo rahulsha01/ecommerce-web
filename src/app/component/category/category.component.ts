@@ -39,9 +39,10 @@ export class CategoryComponent implements OnInit {
   isUpdate: boolean | undefined = false;
   recordId: any;
   translationKeyword: string= "";
+  formTitle: string = 'Add Category';
   fields: any = [ 
-     { "type": "text", "label": "Name", "name": "category_name", "placeholder": "Enter Category Name" },
-     { "type": "textarea", "label": "Description", "name": "category_desc", "placeholder": "Enter Category Description" }]
+     { "type": "text", "label": "Category Name", "key": "category_name", "value": "", "placeholder": "Enter Category Name" },
+     { "type": "textarea", "label": "Description", "key": "category_desc", "value": "", "placeholder": "Enter Category Description" }]
 
 
 
@@ -53,7 +54,6 @@ export class CategoryComponent implements OnInit {
     this.loadToolBarModule();
     this.loadGridModule();
     this.getListOfCategory();
-
   }
 
   loadGridModule() {
@@ -81,6 +81,7 @@ export class CategoryComponent implements OnInit {
     // this.preferenceOrder = "";
     // this.translationKeyword= ""
     // this.isUpdate = false;
+    this.formTitle = 'Add Category';
     this.gridContainerRef?.clear();
     this.loadFromModule();
   }
@@ -102,6 +103,7 @@ export class CategoryComponent implements OnInit {
       if(res.status == 'success') {
         this.categoryList = res.data;
         console.log(this.categoryList);
+        this.httpService.setCategoryList(this.categoryList)
         this.totalRecords = res.data.length;
         
       }
@@ -117,8 +119,11 @@ export class CategoryComponent implements OnInit {
   getEditRowValue(value: any) {
     // this.isUpdate = true;
     console.log(value);
-    
+    this.formTitle = 'Edit Category';
     this.gridContainerRef?.clear();
+    this.fields =  [ 
+      { "type": "text", "label": "Category Name", "key": "category_name", "value": value.item.category_name, "placeholder": "Enter Category Name" },
+      { "type": "textarea", "label": "Description", "key": "category_desc", "value": value.item.category_desc, "placeholder": "Enter Category Description" }]
     // this.categoryname = value.item.categoryname;
     // this.status = value.item.status == "true" ? true : false;
     // this.recordId = value.item.id;

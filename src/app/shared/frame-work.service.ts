@@ -22,9 +22,21 @@ export class FrameWorkService {
   user: any;
   APIURL : string = environment.apiUrl
   results$ = new Subject<any>();
+  categoryList = new Subject<any>()
   constructor(private http: HttpClient,
     private _snackBar: MatSnackBar,
     private router: Router) {
+  }
+
+
+  // Obserable function
+
+  setCategoryList(val: any) {
+    this.categoryList.next(val)
+  }
+
+  getCategoryList() {
+    return this.categoryList
   }
 
    authenticate(email: string, password: string) : Observable<any> {
@@ -39,6 +51,8 @@ export class FrameWorkService {
   logout() {
    
   }
+
+
 
 
   
@@ -119,11 +133,6 @@ export class FrameWorkService {
     return this.http.get(url);
   }
 
-  getProduct() : Observable<any> {
-    let url = `${ENDPOINT.getProductList}`;
-    return this.http.get(url);
-  } 
-
   addEntity(url: string, payload: any): Observable<any> {
     return this.http.post(url, payload);
   }
@@ -132,5 +141,15 @@ export class FrameWorkService {
       return this.http.delete(url);
   }
 
+  addProductEntity(url: string, payload: any): Observable<any> {
+    return this.http.post(url, payload,  { headers: new HttpHeaders().set('Content-Type', 'multipart/form-data') });
+  }
+
+
+  // Website Rest point
+  getProduct() : Observable<any> {
+    let url = `${ENDPOINT.getProductList}`;
+    return this.http.get(url);
+  } 
 
 }

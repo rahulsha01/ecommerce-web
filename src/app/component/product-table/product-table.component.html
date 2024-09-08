@@ -23,7 +23,7 @@
           [values]="productList"
           (changePageSizeEvent)="changePageSize($event)"
           (editFormEventEmitter)="getEditRowValue($event)"
-          (deleteFormEventEmitter)="deleteuserRecord($event)"
+          (deleteFormEventEmitter)="deleteProductById($event)"
           [totalRecord]="totalRecords"
           [perPage]="5"
         >
@@ -31,7 +31,7 @@
       </ng-template>
       <ng-container #formContainer></ng-container>
       <ng-template #formTemplate>
-        <app-common-reactive-form [fields]="fields" formTitle="Add Product">
+        <app-common-reactive-form [fields]="fields" (emitFormData)="saveProduct($event)" formTitle="Add Product">
         </app-common-reactive-form>
       </ng-template>
     </div>

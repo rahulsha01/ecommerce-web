@@ -21,7 +21,7 @@
 
             <ng-container #formContainer></ng-container>
             <ng-template #formTemplate>
-              <app-common-reactive-form [fields]="fields" (emitFormData)="saveCategoary($event)" formTitle="Add Category">
+              <app-common-reactive-form [fields]="fields" (emitFormData)="saveCategoary($event)" [formTitle]="formTitle">
               </app-common-reactive-form>
             </ng-template> 
         </div>
